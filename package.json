@@ -18,7 +18,13 @@
   },
   "private": true,
   "eslintConfig": {
-    "extends": "@iqb/eslint-config",
+    "plugins": [
+      "testcafe"
+    ],
+    "extends": [
+      "@iqb/eslint-config",
+      "plugin:testcafe/recommended"
+    ],
     "parserOptions": {
       "project": "./tsconfig.json"
     }
@@ -46,6 +52,8 @@
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",
     "srcdoc-polyfill": "git+https://github.com/jugglinmike/srcdoc-polyfill.git",
+    "testcafe": "^1.17.1",
+    "testcafe-browser-provider-browserstack": "^1.13.2-alpha.1",
     "tslib": "^2.0.0",
     "ua-parser": "^0.3.5",
     "ua-parser-js": "^0.7.23",
@@ -60,6 +68,7 @@
     "@compodoc/compodoc": "^1.1.11",
     "@iqb/eslint-config": "0.0.12",
     "@types/jasminewd2": "~2.0.8",
+    "eslint-plugin-testcafe": "^0.2.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.4",
