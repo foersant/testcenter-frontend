@@ -29,7 +29,7 @@ test('login test user with wrong login code', async t => {
     .click(page.submitCode)
     .expect(page.codeError.textContent)
     .eql('Der Code ist leider nicht gültig. Bitte noch einmal versuchen')
-    .click(page.relogButton2)
+    .click(page.relogButton1)
     .expect(page.getLocation())
     .eql('http://localhost:4200/#/r/login/', { timeout: 25000 });
 });
@@ -53,7 +53,7 @@ test('login and relog admin', async t => {
     .click(page.submitLogin)
     .expect(page.getLocation())
     .eql('http://localhost:4200/#/r/admin-starter', { timeout: 25000 })
-    .click(page.relogButton1)
+    .click(page.relogButton2)
     .expect(page.getLocation())
     .eql('http://localhost:4200/#/r/login/', { timeout: 25000 });
 });

@@ -5,19 +5,19 @@ class Page {
     // login
     this.loginField = Selector('.root-body mat-form-field.mat-form-field:nth-child(1) input');
     this.passwordField = Selector('.root-body mat-form-field.mat-form-field:nth-child(2) input');
-    this.submitLogin = Selector('mat-card-actions.mat-card-actions:nth-child(2) button:nth-child(1) span:nth-child(1)');
+    this.submitLogin = Selector('button.mat-focus-indicator');
     this.codeInput = Selector('.mat-form-field-infix');
-    this.errorMessage = Selector('mat-card.mat-card:nth-child(1) > p:nth-child(3) > b:nth-child(1)');
-    this.submitCode = Selector('form.ng-dirty > mat-card-actions:nth-child(4) > button:nth-child(1)');
+    this.submitCode = Selector('mat-card-actions:nth-child(4) > button:nth-child(1) > span:nth-child(2)');
+    this.errorMessage = Selector('.vertical-align-middle > span:nth-child(2)');
     this.codeError = Selector('mat-card-content:nth-child(3) > p:nth-child(2) > b');
     this.iqbLogo = Selector('.mat-tooltip-trigger');
-    this.relogButton1 = Selector('button.mat-focus-indicator:nth-child(1)');
-    this.relogButton2 = Selector('button.mat-focus-indicator:nth-child(2)');
+    this.relogButton1 = Selector('.mat-foreground > span:nth-child(2)');
+    this.relogButton2 = Selector('button.mat-focus-indicator:nth-child(2) > span:nth-child(2)');
     this.getLocation = ClientFunction(() => window.location.href);
     this.reloadPage = ClientFunction(() => document.location.reload());
-    this.legalDisclousureButton = Selector('button.mat-focus-indicator:nth-child(2) > span:nth-child(1)');
-    this.sysCheckButton = Selector('button.ng-star-inserted > span:nth-child(1)');
-    this.backButton = Selector('.mat-card-actions > button:nth-child(1)');
+    this.legalDisclousureButton = Selector('a.mat-focus-indicator:nth-child(2) > span:nth-child(1)');
+    this.sysCheckButton = Selector('a.mat-focus-indicator:nth-child(1) > span:nth-child(2)');
+    this.backButton = Selector('.mat-card-actions > button:nth-child(1) > span:nth-child(1)');
     this.endTestButton = Selector('.mat-raised-button > span:nth-child(1)');
     this.sampleBooklet1 = Selector('button.mat-focus-indicator:nth-child(2)');
   }

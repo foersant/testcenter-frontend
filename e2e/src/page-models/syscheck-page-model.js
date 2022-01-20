@@ -3,8 +3,8 @@ import { ClientFunction, Selector } from 'testcafe';
 class Page {
   constructor() {
     this.getLocation = ClientFunction(() => window.location.href);
-    this.sysCheckButton = Selector('button.ng-star-inserted > span:nth-child(1)');
-    this.exampleSysCheck = Selector('button.ng-star-inserted > span:nth-child(2)');
+    this.sysCheckButton = Selector('a.mat-focus-indicator:nth-child(1)');
+    this.exampleSysCheck = Selector('a.mat-focus-indicator:nth-child(1) > span:nth-child(2)');
     this.prevButton = Selector('button.mat-tooltip-trigger:nth-child(2) > span:nth-child(2)');
     this.continueButton = Selector('button.mat-focus-indicator:nth-child(3) > span:nth-child(2)');
     this.networkText = Selector('.mat-card-subtitle');

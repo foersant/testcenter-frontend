@@ -1,4 +1,4 @@
-import page from '../page-models/syscheck-page-model';
+import page from './page-models/syscheck-page-model';
 
 const capabilities = {
   name: 'client side',
