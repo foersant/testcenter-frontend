@@ -1,5 +1,4 @@
 include:
-  - template: Code-Quality.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
   - template: Dependency-Scanning.gitlab-ci.yml
@@ -51,16 +50,16 @@ test-e2e:
     - make run-detached
     - make test-e2e
 
-code_quality:
-  stage: check
+#code_quality:
+#  stage: check
 sast:
   stage: check
 .secret-analyzer:
   stage: check
 dependency_scanning:
   stage: check
-license_scanning:
-  stage: check
+#license_scanning:
+#  stage: check
 
 deploy-tagged-docker-image:
   stage: deploy

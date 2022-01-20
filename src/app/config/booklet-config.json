@@ -12,8 +12,8 @@
     "options": {
       "disabled": "Ausgeschaltet",
       "lean": "Nur wichtige Meldungen",
-      "rich": "Alles außer debug-informationen",
-      "debug": "Auch debug-informationen"
+      "rich": "Alles außer debug-Informationen",
+      "debug": "Auch debug-Informationen"
     },
     "defaultvalue": "rich"
   },
@@ -27,7 +27,7 @@
     "defaultvalue": "separate"
   },
   "stateReportPolicy": {
-    "label": "stateReportPolicy (https://verona-interfaces.github.io/player/#operation-publish-vopStartCommand)",
+    "label": "stateReportPolicy (https://verona-interfaces.github.io/player/#operation-publish-vopStartCommand) - **Achtung**. die Eigenschaft ist nicht implementiert, es wird immer eager verwendet.",
     "options": {
       "none": "pages are separated",
       "eager": "concat-scroll",
@@ -39,8 +39,6 @@
     "label": "Navigationsbuttons für die Seitennavigation (innerhalb einer Aufgabe)",
     "options": {
       "OFF": "Keine Seitennavigation unterstützen (übernimmt ggf. die Aufgabe selbst)",
-      "MERGED": "Die Seitennavigation wird durch die Aufgabennavigation mit übernommen",
-      "SEPARATE_TOP": "Seitennavigation über getrennte Button-Leiste - oben",
       "SEPARATE_BOTTOM": "Seitennavigation über getrennte Button-Leiste - unten"
     },
     "defaultvalue": "SEPARATE_BOTTOM"
@@ -55,31 +53,38 @@
     "defaultvalue": "FULL"
   },
   "unit_menu": {
-    "label": "Extra-Seite mit großen Buttons für Aufgaben zum direkten Springen",
+    "label": "Der Knopf- für die Unit-Menü-Sidebar soll angezeigt werden",
     "options": {
-      "OFF": "Ausgeschaltet",
-      "ENABLED_ONLY": "Eingeschaltet - nur die Aufgaben anzeigen, die noch freigegeben sind",
-      "FULL": "Eingeschaltet - auch die Aufgaben anzeigen, die nicht mehr freigegeben sind (gegraut)"
+      "OFF": "Nein",
+      "FULL": "Ja"
     },
     "defaultvalue": "OFF"
   },
   "force_presentation_complete": {
-    "label": "Verhalten, wenn noch nicht alle Elemente der Aufgabe angezeigt wurden",
+    "label": "Legt fest, ob eine eine Aufgabe verlassen werden darf, die noch nicht vollständig angezeigt wurde",
     "options": {
-      "OFF": "Ignorieren - Weiterblättern möglich",
-      "ON": "Weiterblättern verhindern, bis Anzeige vollständig"
+      "OFF": "Das Verlassen der unvollständig betrachteten Aufgabe wird nicht verhindert.",
+      "ALWAYS": "Das Verlassen der unvollständig betrachteten Aufgabe nicht verhindert.",
+      "ON": "Das Verlassen der unvollständig betrachteten Aufgabe wird verhindert, wenn vorwärts geblättert werden soll."
     },
     "defaultvalue": "OFF"
   },
-  "force_responses_complete": {
-    "label": "Verhalten, wenn noch nicht alle Antworten der Aufgabe vollständig gegeben wurden",
+  "force_response_complete": {
+    "label": "Legt fest, ob eine eine Aufgabe verlassen werden darf, die noch nicht beantwortet wurde",
     "options": {
-      "OFF": "Ignorieren - Weiterblättern möglich",
-      "SOME": "Weiterblättern erst möglich, wenn einige Antworten gegeben wurden",
-      "COMPLETE": "Weiterblättern erst möglich, wenn alle Antworten gegeben wurden",
-      "COMPLETE_AND_VALID": "Weiterblättern erst möglich, wenn alle Antworten gegeben wurden und als gültig eingeschätzt wurden"
+      "OFF": "Das Verlassen der unvollständig beantworteten Aufgabe wird nicht verhindert.",
+      "ALWAYS": "Das Verlassen der unvollständig beantworteten Aufgabe nicht verhindert.",
+      "ON": "Das Verlassen der unvollständig beantworteten Aufgabe wird verhindert, wenn vorwärts geblättert werden soll."
     },
     "defaultvalue": "OFF"
+  },
+  "controller_design": {
+    "label": "Über diesen Parameter können verschiedene Design-Einstellungen gemeinsam festgelegt werden",
+    "options": {
+      "2018": "Runde Schalter für die Unit-Navigation",
+      "2022": "Eckige Schalter für die Unit-Navigation"
+    },
+    "defaultvalue": "2022"
   },
   "unit_screenheader": {
     "label": "Legt fest, ob im obersten Seitenbereich Platz für Logo, Navigations-Buttons u. ä. gelassen wird.",
@@ -87,6 +92,7 @@
       "OFF": "Kein Seitenkopf. Achtung: Logo bleibt sichtbar (überlappt).",
       "WITH_UNIT_TITLE": "Seitenkopf wird angezeigt mit Titel der Unit (s. Booklet-XML)",
       "WITH_BOOKLET_TITLE": "Seitenkopf wird angezeigt mit Titel des Booklets (s. Booklet-XML)",
+      "WITH_BLOCK_TITLE": "Seitenkopf wird angezeigt mit Titel des Aufgabenblocks (s. Booklet-XML)",
       "EMPTY": "Seitenkopf wird angezeigt (leer)"
     },
     "defaultvalue": "EMPTY"
@@ -104,6 +110,40 @@
     "options": {
       "OFF": "Die verbleibende Zeit wird nicht angezeigt.",
       "ON": "Die verbleibende Zeit wird angezeigt."
+    },
+    "defaultvalue": "OFF"
+  },
+  "show_end_button_in_player": {
+    "label": "Manche Player können einen Test-Beenden anzeigen, wenn es es ihnen vom Testcenter erlaubt wird. Diese Einstellung legt fest, wann das der Fall ist.",
+    "options": {
+      "OFF": "Den Test-Beenden-Button im Player nie anzeigen.",
+      "ALWAYS": "Den Test-Beenden-Button im Player immer anzeigen.",
+      "ONLY_LAST_UNIT": "Den Test-Beenden-Button im Player nur in der letzten Unit anzeigen."
+    },
+    "defaultvalue": "OFF"
+  },
+  "restore_current_page_on_return": {
+    "label": "Legt fest, ob, wenn (z. B.) nach einem Neuladen eine Unit wieder geöffnet wird, zur letzten geöffneten Seite gesprungen werden soll.",
+    "options": {
+      "OFF": "Beim Zurückkehren zur Unit auf Seite 1 beginnen.",
+      "ON": "Beim Zurückkehren zur Unit auf der letzten gesehenen Seite beginnen."
+    },
+    "defaultvalue": "OFF"
+  },
+  "allow_player_to_terminate_test": {
+    "label": "Legt fest, ob der Player des laufenden Test beenden darf, in dem er z. B. einen entsprechenden Navigationsknopf zeigt.",
+    "options": {
+      "OFF": "Der Player darf den laufenden Test nicht beenden.",
+      "LAST_UNIT": "Der Player darf den laufenden Test nur Beenden, wenn die letzte Unit erreicht ist.",
+      "ON": "Der Player darf den laufenden test immer beenden. (`force_presentation_complete` und `force_response_complete` gelten trotzdem!)."
+    },
+    "defaultvalue": "ON"
+  },
+  "lock_test_on_termination": {
+    "label": "Legt fest, ob der test gesperrt werden soll, wenn er beendet wird. Dies ist mit Vorsicht zu benutzen.",
+    "options": {
+      "ON": "Ja, der Test soll gesperrt werden, wenn er beendet wird. Dies ist mit Vorsicht zu benutzen.",
+      "OFF": "Nein, der test kann nach dem Beenden wieder aufgerufen werden, so lange der account aktiv ist."
     },
     "defaultvalue": "OFF"
   }

@@ -1,5 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import {
+  BehaviorSubject, Observable, ReplaySubject, Subject
+} from 'rxjs';
 import { CustomtextService } from 'iqb-components';
 import {
   AppError,
@@ -12,10 +14,9 @@ const localStorageAuthDataKey = 'iqb-tc-a';
 @Injectable({
   providedIn: 'root'
 })
-
 export class MainDataService {
-  appError$ = new Subject<AppError>();
-  _authData$ = new Subject<AuthData>();
+  appError$ = new ReplaySubject<AppError>(1);
+  private _authData$ = new Subject<AuthData>();
   get authData$(): Observable<AuthData> {
     return this._authData$.asObservable();
   }
@@ -28,50 +29,46 @@ export class MainDataService {
   appTitle$ = new BehaviorSubject<string>('IQB-Testcenter');
   appSubTitle$ = new BehaviorSubject<string>('');
   globalWarning = '';
-  defaultTcHeaderHeight = document.documentElement.style.getPropertyValue('--tc-header-height');
-  defaultTcUnitTitleHeight = document.documentElement.style.getPropertyValue('--tc-unit-title-height');
-  defaultTcUnitPageNavHeight = document.documentElement.style.getPropertyValue('--tc-unit-page-nav-height');
 
   // set by app.component.ts
   postMessage$ = new Subject<MessageEvent>();
   appWindowHasFocus$ = new Subject<boolean>();
 
+  // TODO refactor this, it's very inefficient
+  // everytime authData is needed, getAuthData gets called and localstorage gets accessed.
+  // better would be to access it once at loading time abd later use the valueOf _authData$
+
   static getAuthData(): AuthData {
-    let myReturn: AuthData = null;
     const storageEntry = localStorage.getItem(localStorageAuthDataKey);
-    if (storageEntry !== null) {
-      if (storageEntry.length > 0) {
-        try {
-          myReturn = JSON.parse(storageEntry as string);
-        } catch (e) {
-          console.warn('corrupt localStorage authData entry');
-          myReturn = null;
-        }
-      }
+    if (!storageEntry) {
+      return null;
     }
-    return myReturn;
+    try {
+      return JSON.parse(storageEntry as string);
+    } catch (e) {
+      console.warn('corrupt localStorage authData entry');
+      return null;
+    }
   }
 
   static getTestConfig(): KeyValuePairs {
-    let myReturn: KeyValuePairs = null;
     const storageEntry = localStorage.getItem(localStorageTestConfigKey);
-    if (storageEntry !== null) {
-      if (storageEntry.length > 0) {
-        try {
-          myReturn = JSON.parse(storageEntry as string);
-        } catch (e) {
-          console.warn('corrupt localStorage testConfig entry');
-          myReturn = null;
-        }
-      }
+    if (!storageEntry) {
+      return null;
     }
-    return myReturn;
+    try {
+      return JSON.parse(storageEntry as string);
+    } catch (e) {
+      console.warn('corrupt localStorage testConfig entry');
+      return null;
+    }
   }
 
   constructor(
     @Inject('API_VERSION_EXPECTED') readonly expectedApiVersion: string,
     private cts: CustomtextService
-  ) { }
+  ) {
+  }
 
   setSpinnerOn(): void {
     this.isSpinnerOn$.next(true);

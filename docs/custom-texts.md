@@ -68,10 +68,16 @@ replacements:
 |`booklet_codeToEnterPrompt`|Aufforderung für die Eingabe eines Freigabewortes (Dialog-Box)|Bitte gib das Freigabewort ein, das angesagt wurde!|
 |`booklet_codeToEnterTitle`|Titel der Dialogbox für die Eingabe eines Freigabewortes|Freigabewort|
 |`booklet_errormessage`|Nachricht an die Testperson, wenn ein schwerer Fehler aufgetreten ist|Es ist ein schwerer Fehler aufgetreten. Bitte rufe die Aufsichtsperson und beschreibe das Problem!|
+|`booklet_loadingBlock`|Meldung wenn ein Zeitgesteuerter Block betreten wurde, der noch nicht geladen wurde|Aufgabenblock wird geladen|
+|`booklet_loadingUnit`|Meldung wenn eine Unit betreten wird, die noch nicht geladen wurde|Aufgabe wird geladen|
 |`booklet_msgPresentationNotCompleteTextNext`|Nachrichttext, dass nicht weitergeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Du kannst erst weiterblättern, wenn Audio-Dateien vollständig abgespielt wurden und wenn du in allen Fenstern bis ganz nach unten gescrollt hast.|
 |`booklet_msgPresentationNotCompleteTextPrev`|Nachrichttext, dass nicht zurückgeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Eine Audio-Datei ist noch nicht bis zu Ende abgespielt oder Seiten wurden noch nicht vollständig gezeigt. Wenn du jetzt zurückblätterst, kannst Du später Audio-Dateien nicht nocheinmal starten.|
 |`booklet_msgPresentationNotCompleteTitleNext`|Titel der Nachricht (Dialogbox), dass nicht weitergeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Weiterblättern nicht möglich!|
 |`booklet_msgPresentationNotCompleteTitlePrev`|Titel der Nachricht (Dialogbox), dass nicht zurückgeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Zurückblättern - Warnung|
+|`booklet_msgResponseNotCompleteTextNext`|Nachrichttext, dass nicht weitergeblättert werden kann, solange die Bearbeitung der Aufgaben nicht abgeschlossen ist|Du kannst erst weiterblättern, wenn alle Felder ausgefüllt sind.|
+|`booklet_msgResponseNotCompleteTextPrev`|Nachrichttext, dass nicht zurückgeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Eine Audio-Datei ist noch nicht bis zu Ende abgespielt oder Seiten wurden noch nicht vollständig gezeigt. Wenn du jetzt zurückblätterst, kannst Du später Audio-Dateien nicht nocheinmal starten.|
+|`booklet_msgResponseNotCompleteTitleNext`|Titel der Nachricht (Dialogbox), dass nicht weitergeblättert werden kann, solange die Bearbeitung der Aufgabe nicht abgeschlossen ist|Weiterblättern nicht möglich!|
+|`booklet_msgResponseNotCompleteTitlePrev`|Titel der Nachricht (Dialogbox), dass nicht zurückgeblättert werden kann, solange die Präsentation des Aufgabeninhaltes nicht abgeschlossen ist|Zurückblättern - Warnung|
 |`booklet_msgSoonTimeOver1Minute`|Nachricht, dass für die Bearbeitung eines Abschnittes noch 1 min Zeit ist|Du hast noch 1 Minute Zeit für die Bearbeitung der Aufgaben in diesem Abschnitt.|
 |`booklet_msgSoonTimeOver5Minutes`|Nachricht, dass für die Bearbeitung eines Abschnittes noch 5 min Zeit sind|Du hast noch 5 Minuten Zeit für die Bearbeitung der Aufgaben in diesem Abschnitt.|
 |`booklet_msgTimeOver`|Nachricht, dass die Bearbeitungszeit für einen Abschnitt abgelaufen ist.|Die Bearbeitung des Abschnittes ist beendet.|
@@ -79,6 +85,9 @@ replacements:
 |`booklet_msgTimerStarted`|Nachricht, dass der Timer für die Bearbeitung eines Abschnittes gestartet wurde|Die Bearbeitungszeit für diesen Abschnitt hat begonnen: |
 |`booklet_pausedmessage`|Nachricht an die Testperson, wenn der Test vom System unterbrochen wurde|Der Test wurde kurz angehalten.|
 |`booklet_tasklisttitle`|Titel für die Auflistung der Aufgaben (Schalter)|Aufgaben|
+|`booklet_unitLoading`|Untertitel des Ladebalkens, xxx% geladen|geladen|
+|`booklet_unitLoadingPending`|Untertitel des Ladebalkens, wenn Aufgabe geladen werden wird, aber noch nicht dran ist|in der Warteschleife|
+|`booklet_unitLoadingUnknownProgress`|Untertitel des Ladebalkens, wenn Aufgabe geladen wird, Fortschritt aber unbekannt|wird geladen|
 |`booklet_warningLeaveTimerBlockTextPrompt`|Schalterbeschriftung für 'Zurück zum Test'|Du verlässt einen zeitbeschränkten Bereich und kannst nicht zurückkehren. Trotzdem weiterblättern?|
 |`booklet_warningLeaveTimerBlockTitle`|Titel für Warnung (Dialogbox) vor dem vorzeitigen Verlassen eines Abschnittes mit Timer|Aufgabenabschnitt verlassen?|
 |`gm_auto_checkall`|Der 'Immer alle Auswählen'-Schalter|Alle Tests gleichzeitig steuern|
@@ -98,12 +107,12 @@ replacements:
 |`gm_control_pause`|Control: pause|pause|
 |`gm_control_resume`|Control: weiter|weiter|
 |`gm_control_unlock`|Control: Entsperren|Test Entsperren|
-|`gm_control_unlock_success_warning`|Wird angezeigt, wenn tests entsperrt wurden|ACHTUNG! Die betreffenden Browser müssen ggf. neu gestartet werden.|
+|`gm_control_unlock_success_warning`|Wird angezeigt, wenn Tests entsperrt wurden|ACHTUNG! Die betreffenden Browser müssen ggf. neu gestartet werden.|
 |`gm_control_unlock_tooltip`|Tooltip: Freigeben|Test Freigeben|
 |`gm_controls`|Überschrift: Test-Steuerung|Test-Steuerung|
 |`gm_filter_locked`|Filter: gesperrte ausblenden|gesperrte|
 |`gm_filter_pending`|Filter: nicht gestartete ausblenden|nicht gestartete|
-|`gm_headline`|Überschrift: Gruppenmonitor|IQB-Testcenter Gruppenüberwachung|
+|`gm_headline`|Überschrift: Gruppenmonitor|Gruppenüberwachung|
 |`gm_hide_controls_tooltip`|Tooltip: Test-Steuerung verbergen|Test-Steuerung verbergen|
 |`gm_menu_activity`|Meinueintrag: Aktivität|Aktivität|
 |`gm_menu_cols`|Meinueintrag: Spalten|Spalten|
@@ -121,7 +130,7 @@ replacements:
 |`login_bookletSelectPromptNull`|Nachricht für den Fall, dass Booklet(s) beendet wurden und keine weiteren zur Verfügung stehen|Beendet. Es können keine weiteren Testhefte gestartet werden.|
 |`login_bookletSelectPromptOne`|Aufforderung, den einen gefundenen Test anzuklicken (auf Schalter klicken)|Bitte klicke auf die Schaltfläche auf der linken Seite, um den Test zu starten!|
 |`login_codeInputPrompt`|Aufforderung, Code einzugeben (bei einem zweistufigen Login-Prozess)|Bitte Log-in eingeben, der auf dem Zettel steht!|
-|`login_codeInputTitle`|Titel des Eingabeformulars für den Code|Log-in eingeben|
+|`login_codeInputTitle`|Titel des Eingabeformulares für den Code|Log-in eingeben|
 |`login_pagesNaviPrompt`|Aufforderungstext, weitere Seiten einer Unit auszuwählen, z. B. 'Wähle hier andere Seiten dieser Aufgabe:'|Weitere Seiten:|
 |`login_testEndButtonLabel`|Schalterbeschriftung für 'Test beenden'|Test beenden|
 |`syscheck_intro`|Text auf der ersten Seite des System-Checks|Dieser Systemcheck soll gewährleisten, dass der von Ihnen verwendete Computer für eine bestimmte Befragung oder Testung geeignet ist.|

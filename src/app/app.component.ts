@@ -17,8 +17,8 @@ import { AppConfig } from './config/app.config';
 export class AppComponent implements OnInit, OnDestroy {
   private appErrorSubscription: Subscription = null;
   private appTitleSubscription: Subscription = null;
-  showError = false;
 
+  showError = false;
   errorData: AppError;
 
   constructor(
@@ -31,12 +31,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   closeErrorBox(): void {
     this.showError = false;
+    this.mds.appError$.next();
   }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.appErrorSubscription = this.mds.appError$.subscribe(err => {
-        if (err && !this.mds.errorReportingSilent) {
+        if (err) {
           this.errorData = err;
           this.showError = true;
         }
@@ -60,8 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         const msgType = msgData.type;
         if ((msgType !== undefined) && (msgType !== null)) {
-          if (msgType.substr(0, 2) === 'vo') {
-            console.log('123');
+          if ((msgType.substr(0, 2) === 'vo')) {
             this.mds.postMessage$.next(event);
           }
         }

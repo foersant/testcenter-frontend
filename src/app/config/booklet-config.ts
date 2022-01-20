@@ -6,14 +6,19 @@ export class BookletConfig {
 	logPolicy: "disabled" | "lean" | "rich" | "debug" = "rich";
 	pagingMode: "separate" | "concat-scroll" | "concat-scroll-snap" = "separate";
 	stateReportPolicy: "none" | "eager" | "on-demand" = "eager";
-	page_navibuttons: "OFF" | "MERGED" | "SEPARATE_TOP" | "SEPARATE_BOTTOM" = "SEPARATE_BOTTOM";
+	page_navibuttons: "OFF" | "SEPARATE_BOTTOM" = "SEPARATE_BOTTOM";
 	unit_navibuttons: "OFF" | "ARROWS_ONLY" | "FULL" = "FULL";
-	unit_menu: "OFF" | "ENABLED_ONLY" | "FULL" = "OFF";
-	force_presentation_complete: "OFF" | "ON" = "OFF";
-	force_responses_complete: "OFF" | "SOME" | "COMPLETE" | "COMPLETE_AND_VALID" = "OFF";
-	unit_screenheader: "OFF" | "WITH_UNIT_TITLE" | "WITH_BOOKLET_TITLE" | "EMPTY" = "EMPTY";
+	unit_menu: "OFF" | "FULL" = "OFF";
+	force_presentation_complete: "OFF" | "ALWAYS" | "ON" = "OFF";
+	force_response_complete: "OFF" | "ALWAYS" | "ON" = "OFF";
+	controller_design: "2018" | "2022" = "2022";
+	unit_screenheader: "OFF" | "WITH_UNIT_TITLE" | "WITH_BOOKLET_TITLE" | "WITH_BLOCK_TITLE" | "EMPTY" = "EMPTY";
 	unit_title: "OFF" | "ON" = "ON";
 	unit_show_time_left: "OFF" | "ON" = "OFF";
+	show_end_button_in_player: "OFF" | "ALWAYS" | "ONLY_LAST_UNIT" = "OFF";
+	restore_current_page_on_return: "OFF" | "ON" = "OFF";
+	allow_player_to_terminate_test: "OFF" | "LAST_UNIT" | "ON" = "ON";
+	lock_test_on_termination: "ON" | "OFF" = "OFF";
 
 	public setFromKeyValuePairs(config) {
 		if (config) {
@@ -25,10 +30,15 @@ export class BookletConfig {
 			if (config['unit_navibuttons']) { this.unit_navibuttons = config['unit_navibuttons']}
 			if (config['unit_menu']) { this.unit_menu = config['unit_menu']}
 			if (config['force_presentation_complete']) { this.force_presentation_complete = config['force_presentation_complete']}
-			if (config['force_responses_complete']) { this.force_responses_complete = config['force_responses_complete']}
+			if (config['force_response_complete']) { this.force_response_complete = config['force_response_complete']}
+			if (config['controller_design']) { this.controller_design = config['controller_design']}
 			if (config['unit_screenheader']) { this.unit_screenheader = config['unit_screenheader']}
 			if (config['unit_title']) { this.unit_title = config['unit_title']}
 			if (config['unit_show_time_left']) { this.unit_show_time_left = config['unit_show_time_left']}
+			if (config['show_end_button_in_player']) { this.show_end_button_in_player = config['show_end_button_in_player']}
+			if (config['restore_current_page_on_return']) { this.restore_current_page_on_return = config['restore_current_page_on_return']}
+			if (config['allow_player_to_terminate_test']) { this.allow_player_to_terminate_test = config['allow_player_to_terminate_test']}
+			if (config['lock_test_on_termination']) { this.lock_test_on_termination = config['lock_test_on_termination']}
 		}
 	}
 
@@ -63,8 +73,11 @@ export class BookletConfig {
 					case 'force_presentation_complete':
 						this.force_presentation_complete = configValue;
 						break;
-					case 'force_responses_complete':
-						this.force_responses_complete = configValue;
+					case 'force_response_complete':
+						this.force_response_complete = configValue;
+						break;
+					case 'controller_design':
+						this.controller_design = configValue;
 						break;
 					case 'unit_screenheader':
 						this.unit_screenheader = configValue;
@@ -74,6 +87,18 @@ export class BookletConfig {
 						break;
 					case 'unit_show_time_left':
 						this.unit_show_time_left = configValue;
+						break;
+					case 'show_end_button_in_player':
+						this.show_end_button_in_player = configValue;
+						break;
+					case 'restore_current_page_on_return':
+						this.restore_current_page_on_return = configValue;
+						break;
+					case 'allow_player_to_terminate_test':
+						this.allow_player_to_terminate_test = configValue;
+						break;
+					case 'lock_test_on_termination':
+						this.lock_test_on_termination = configValue;
 						break;
 				}
 			}

@@ -6,22 +6,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Sort } from '@angular/material/sort';
 
-import { map } from 'rxjs/operators';
 import { saveAs } from 'file-saver';
 import {
-  ConfirmDialogComponent,
-  ConfirmDialogData,
-  MessageDialogComponent,
-  MessageDialogData,
-  MessageType
+  ConfirmDialogComponent, ConfirmDialogData, MessageDialogComponent,
+  MessageDialogData, MessageType
 } from 'iqb-components';
-import { MainDataService } from '../../maindata.service';
-import { BackendService } from '../backend.service';
+import { map } from 'rxjs/operators';
 import { WorkspaceDataService } from '../workspacedata.service';
-import { IqbFilesUploadQueueComponent } from './iqb-files-upload-queue/iqb-files-upload-queue.component';
 import {
   IQBFileType, GetFileResponseData, IQBFile, IQBFileTypes
 } from '../workspace.interfaces';
+import { BackendService } from '../backend.service';
+import { MainDataService } from '../../maindata.service';
+import { IqbFilesUploadQueueComponent } from './iqb-files-upload-queue/iqb-files-upload-queue.component';
 import { FileDeletionReport } from './files.interfaces';
 
 interface FileStats {
@@ -71,7 +68,8 @@ export class FilesComponent implements OnInit {
 
   constructor(
     @Inject('SERVER_URL') private serverUrl: string,
-    @Inject('VERONA_API_VERSION_SUPPORTED') private veronaApiVersionSupported: string,
+    @Inject('VERONA_PLAYER_API_VERSION_MIN') public veronaPlayerApiVersionMin: number,
+    @Inject('VERONA_PLAYER_API_VERSION_MAX') public veronaPlayerApiVersionMax: number,
     private bs: BackendService,
     public wds: WorkspaceDataService,
     public confirmDialog: MatDialog,
@@ -209,16 +207,15 @@ export class FilesComponent implements OnInit {
   }
 
   private addFrontendChecksToFile(file: IQBFile): IQBFile {
-    if (typeof file.info['verona-version'] !== 'undefined') {
-      const fileMayor = file.info['verona-version'].toString().split('.').shift();
-      const systemMayor = this.veronaApiVersionSupported.split('.').shift();
-      if (fileMayor !== systemMayor) {
-        if (typeof file.report.error === 'undefined') {
-          // eslint-disable-next-line no-param-reassign
-          file.report.error = [];
-        }
-        file.report.error.push(`Verona Version of this Player is not compatible
-          with this system's version (\`${this.veronaApiVersionSupported}\`)!`);
+    if (file.info.veronaVersion) {
+      const fileMayor = parseInt(file.info.veronaVersion.toString().split('.').shift(), 10);
+      if (typeof file.report.error === 'undefined') {
+        // eslint-disable-next-line no-param-reassign
+        file.report.error = [];
+      }
+      if (fileMayor < this.veronaPlayerApiVersionMin || fileMayor > this.veronaPlayerApiVersionMax) {
+        file.report.error.push(`Verona Version \`${fileMayor}\` is not supported
+          (only versions between \`${this.veronaPlayerApiVersionMin}\` and \`${this.veronaPlayerApiVersionMax}\`)`);
       }
     }
     return file;
@@ -228,7 +225,7 @@ export class FilesComponent implements OnInit {
     this.mds.setSpinnerOn();
     this.bs.downloadFile(this.wds.wsId, file.type, file.name)
       .subscribe(
-        (fileData: Blob|boolean) => {
+        (fileData: Blob | boolean) => {
           this.mds.setSpinnerOff();
           if (fileData !== false) {
             saveAs(fileData as Blob, file.name);
