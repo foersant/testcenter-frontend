@@ -7,6 +7,17 @@ class Page {
     this.loginField = Selector('.root-body mat-form-field.mat-form-field:nth-child(1) input');
     this.passwordField = Selector('.root-body mat-form-field.mat-form-field:nth-child(2) input');
     this.submitLogin = Selector('mat-card-actions.mat-card-actions:nth-child(2) button:nth-child(1) span:nth-child(1)');
+
+    // Logout
+    this.iqbLogo = Selector('.mat-tooltip-trigger');
+    this.relogButton2 = Selector('button.mat-focus-indicator:nth-child(2)');
+    this.relogButton1 = Selector('.mat-foreground > span:nth-child(1)');
+
+    // Workspace Administration
+    this.tab1 = Selector('a.mat-tab-link:nth-child(1)');
+    this.tab2 = Selector('a.mat-tab-link:nth-child(2)');
+    this.tab3 = Selector('a.mat-tab-link:nth-child(3)');
+    this.workspace = Selector('.mat-primary');
   }
 
   async login(name, password) {

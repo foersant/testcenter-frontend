@@ -1,5 +1,9 @@
-import page from './page-models/syscheck-page-model';
+import page from '../page-models/syscheck-page-model';
 
+const capabilities = {
+  name: 'client side',
+  'browserstack.name': 'syscheck'
+};
 // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 fixture`Syscheck`
   .page`http://localhost:4200/#/r/login/`;
@@ -42,5 +46,8 @@ test('perform system check', async t => {
     .expect(page.summaryCheckbox.textContent)
     .eql(' Check this out: true ')
     .expect(page.summaryRadio.textContent)
-    .eql(' All we here is: Radio Gugu ');
+    .eql(' All we here is: Radio Gugu ')
+    .click(page.cancelButton)
+    .expect(page.getLocation())
+    .eql('http://localhost:4200/#/r/check-starter', { timeout: 10000 });
 });

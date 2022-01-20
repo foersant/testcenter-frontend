@@ -1,6 +1,6 @@
 import { browser, logging } from 'protractor';
 
-import LoginPage from './app.po';
+import LoginPage from '../app.po';
 
 describe('Testcenter Frontend', () => {
   it('should display title texts', async () => {

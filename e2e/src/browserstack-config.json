@@ -1,0 +1,32 @@
+{ 
+  "name": "Frontend E2E Tests",
+  "project": "Testcenter Frontend",
+  "browserstack.debug": true,
+  "browserstack.console": "errors",
+
+  "environments": {
+    "chrome": {
+      "os": "Windows",
+      "os_version": 10,
+      "browser": "chrome",
+      "browser_version": "latest"
+    },
+    "firefox": {
+      "os": "Windows",
+      "os_version": 10,
+      "browser": "firefox",
+      "browser_version": "latest"
+    },
+    "edge": {
+      "os": "Windows",
+      "os_version": 10,
+      "browser": "edge",
+      "browser_version": "latest"
+    },
+    "safari": {
+      "os": "OS X Monterey",
+      "browser": "chrome",
+      "browser_version": "latest"
+    }
+  }
+}

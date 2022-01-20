@@ -18,7 +18,7 @@ class Page {
 
     // booklet2
     this.sampleBooklet2 = Selector('button.mat-focus-indicator:nth-child(3)');
-    this.iFrameUnit = Selector('.unitHost', { timeout: 60000 });
+    this.iFrameUnit = Selector('.unitHost');
     this.unitTitle = Selector('#unit-title > p');
     this.nextUnit = Selector('#next-unit');
     this.lastUnit = Selector('#last-unit');

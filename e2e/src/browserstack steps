@@ -1,0 +1,16 @@
+start connection:
+  ./BrowserStackLocal --key 9M9jJeLrWGfi7Fe35Hgy --local-identifier TestCafe --daemon start --parallel-runs 5
+
+stop connection:
+    ./BrowserStackLocal --key 9M9jJeLrWGfi7Fe35Hgy --local-identifier TestCafe --daemon stop
+
+run parallel:
+  testcafe "browserstack:chrome@96.0:Windows 10,browserstack:firefox@94.0:Windows 10,browserstack:edge@95:Windows 10,browserstack:safari@15:OS X Monterey,browserstack:chrome@96:Windows 11" .\\e2e\\src\\*.ts
+
+run sequentiel:
+  testcafe "browserstack:chrome@96.0:Windows 10" loginPage.test.ts ; testcafe "browserstack:firefox@94.0:Windows 10" loginPage.test.ts ; testcafe "browserstack:edge@95:Windows 10" loginPage.test.ts ;  testcafe "browserstack:safari@15:OS X Monterey" loginPage.test.ts ; testcafe "browserstack:chrome@96:Windows 11" loginPage.test.ts
+
+
+testcafe "browserstack:chrome@96.0:Windows 10" syscheck.test.ts --skip-js-errors ; testcafe "browserstack:firefox@94.0:Windows 10" syscheck.test.ts --skip-js-errors ; testcafe "browserstack:edge@95:Windows 10" syscheck.test.ts --skip-js-errors ;  testcafe "browserstack:safari@15:OS X Monterey"syscheck.test.ts --skip-js-errors ; testcafe "browserstack:chrome@96:Windows 11" syscheck.test.ts --skip-js-errors
+
+testcafe "browserstack:chrome@96.0:Windows 10" superadmin.test.ts ; testcafe "browserstack:firefox@94.0:Windows 10" superadmin.test.ts ; testcafe "browserstack:edge@95:Windows 10" superadmin.test.ts ;  testcafe "browserstack:safari@15:OS X Monterey" superadmin.test.ts ; testcafe "browserstack:chrome@96:Windows 11" superadmin.test.ts

@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <h1 id='output'>test</h1>
+    <iframe srcdoc='<!DOCTYPE html><html><body>inner<script>setTimeout(() => {window.parent.postMessage({type: `myMessage`}, `*`);}, 1500);</script></body></html>' sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+    <script>
+        window.addEventListener('message', (event) => {
+        console.log({event});
+        document.getElementById('output').innerText = event.data.type;
+      });
+    </script>
+  </body>
+</html>

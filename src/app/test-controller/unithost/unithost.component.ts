@@ -49,8 +49,11 @@ export class UnithostComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    console.log('!');
     setTimeout(() => {
+      console.log('!!!!');
       this.postMessageSubscription = this.mds.postMessage$.subscribe((m: MessageEvent) => {
+        console.log(m);
         const msgData = m.data;
         const msgType = msgData.type;
         let msgPlayerId = msgData.sessionId;
@@ -161,7 +164,6 @@ export class UnithostComponent implements OnInit, OnDestroy {
           }
         }
       });
-
       this.iFrameHostElement = <HTMLElement>document.querySelector('#iFrameHost');
 
       this.iFrameItemplayer = null;

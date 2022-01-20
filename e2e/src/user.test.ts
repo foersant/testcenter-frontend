@@ -16,6 +16,7 @@ test('start a sample booklet and click through the units tabs', async t => {
     .click(page.sampleBooklet1)
     .expect(page.getLocation())
     .eql('http://localhost:4200/#/t/1/status', { timeout: 25000 })
+    .wait(120000)
     .expect(page.getLocation())
     .eql('http://localhost:4200/#/t/1/u/1', { timeout: 25000 })
     .click(page.unit3)
@@ -37,6 +38,7 @@ test('navigate through test units with arrow buttons', async t => {
     .eql('http://localhost:4200/#/t/2/u/1', { timeout: 25000 })
     .expect(page.unitTitle.textContent)
     .eql('Sample Unit')
+    .wait(10000)
     .switchToIframe(page.iFrameUnit)
     .click(page.lastUnit)
     .switchToMainWindow()
@@ -44,6 +46,5 @@ test('navigate through test units with arrow buttons', async t => {
     .eql('http://localhost:4200/#/t/2/u/3', { timeout: 25000 })
     .expect(page.unitTitle.textContent)
     .eql('Sample Unit again, with Alias', { timeout: 15000 })
-    .switchToIframe(page.iFrameUnit)
-    .click(page.firstUnit);
+    .switchToIframe(page.iFrameUnit);
 });

@@ -53,7 +53,7 @@
                iframe.removeAttribute("sandbox");
              } else if (!options || options.force !== false) {
                logError(sandboxMsg);
-               iframe.setAttribute("data-srcdoc-polyfill", sandboxMsg);
+               //iframe.setAttribute("data-srcdoc-polyfill", sandboxMsg);
              }
            }
          };
@@ -122,8 +122,8 @@
            return;
          }
 
-         srcDoc.set = implementations.legacy;
-
+         // srcDoc.set = implementations.legacy;
+          
          // Automatically shim any iframes already present in the document
          iframes = document.getElementsByTagName("iframe");
          idx = iframes.length;
