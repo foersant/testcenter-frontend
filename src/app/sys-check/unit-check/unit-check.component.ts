@@ -91,6 +91,7 @@ export class UnitCheckComponent implements OnInit, OnDestroy {
         this.iFrameItemplayer.setAttribute('height', String(this.iFrameHostElement.clientHeight - 5));
         this.iFrameHostElement.appendChild(this.iFrameItemplayer);
         srcDoc.set(this.iFrameItemplayer, this.ds.unitAndPlayerContainer.player);
+        console.log(this.ds.unitAndPlayerContainer.player);
       }
     });
   }
