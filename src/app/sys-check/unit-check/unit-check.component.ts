@@ -6,15 +6,13 @@ import { MainDataService } from '../../maindata.service';
 import { BackendService } from '../backend.service';
 import { SysCheckDataService } from '../sys-check-data.service';
 
-declare let srcDoc: any;
-
 @Component({
   selector: 'iqb-unit-check',
   templateUrl: './unit-check.component.html',
   styleUrls: ['./unit-check.component.css']
 })
 export class UnitCheckComponent implements OnInit, OnDestroy {
-  public pageList: PageData[] = [];
+  pageList: PageData[] = [];
   private iFrameHostElement: HTMLElement;
   private iFrameItemplayer: HTMLIFrameElement = null;
   private postMessageSubscription: Subscription = null;
@@ -31,7 +29,7 @@ export class UnitCheckComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:resize')
-  public onResize(): any {
+  onResize(): void {
     if (this.iFrameItemplayer && this.iFrameHostElement) {
       const divHeight = this.iFrameHostElement.clientHeight;
       this.iFrameItemplayer.setAttribute('height', String(divHeight - 5));
@@ -90,13 +88,12 @@ export class UnitCheckComponent implements OnInit, OnDestroy {
         this.iFrameItemplayer.setAttribute('class', 'unitHost');
         this.iFrameItemplayer.setAttribute('height', String(this.iFrameHostElement.clientHeight - 5));
         this.iFrameHostElement.appendChild(this.iFrameItemplayer);
-        srcDoc.set(this.iFrameItemplayer, this.ds.unitAndPlayerContainer.player);
-        console.log(this.ds.unitAndPlayerContainer.player);
+        this.iFrameItemplayer.setAttribute('srcdoc', this.ds.unitAndPlayerContainer.player);
       }
     });
   }
 
-  setPageList(validPages: string[], currentPage: string) {
+  setPageList(validPages: string[], currentPage: string): void {
     if ((validPages instanceof Array)) {
       const newPageList: PageData[] = [];
       if (validPages.length > 1) {
