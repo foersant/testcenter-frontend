@@ -53,7 +53,7 @@ export class UnithostComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       console.log('!!!!');
       this.postMessageSubscription = this.mds.postMessage$.subscribe((m: MessageEvent) => {
-        console.log(m);
+        console.log({ unitHostGot: m });
         const msgData = m.data;
         const msgType = msgData.type;
         let msgPlayerId = msgData.sessionId;

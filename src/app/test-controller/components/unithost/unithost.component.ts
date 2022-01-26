@@ -21,7 +21,6 @@ import {
 } from '../../interfaces/verona.interfaces';
 import { Testlet, UnitControllerData } from '../../classes/test-controller.classes';
 
-
 @Component({
   templateUrl: './unithost.component.html',
   styleUrls: ['./unithost.component.css']

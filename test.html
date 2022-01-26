@@ -2,7 +2,7 @@
 <html>
   <body>
     <h1 id='output'>test</h1>
-    <iframe srcdoc='<!DOCTYPE html><html><body>inner<script>setTimeout(() => {window.parent.postMessage({type: `myMessage`}, `*`);}, 1500);</script></body></html>' sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+    <iframe srcdoc='<!DOCTYPE html><html><body>inner<script>setTimeout(() => {window.parent.postMessage({type: `myMessage`}, `*`);}, 1500);const x = new class { y = new class {} } </script></body></html>' sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
     <script>
         window.addEventListener('message', (event) => {
         console.log({event});

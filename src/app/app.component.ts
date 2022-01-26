@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
         });
 
       window.addEventListener('message', (event: MessageEvent) => {
-        console.log(event);
+        console.log({ messageEventInApp: event });
         const msgData = event.data;
         if (!msgData) {
           return;

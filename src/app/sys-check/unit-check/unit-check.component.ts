@@ -53,6 +53,7 @@ export class UnitCheckComponent implements OnInit, OnDestroy {
                 this.postMessageTarget = m.source as Window;
                 if (typeof this.postMessageTarget !== 'undefined') {
                   this.itemplayerSessionId = Math.floor(Math.random() * 20000000 + 10000000).toString();
+                  console.log("OK");
                   this.postMessageTarget.postMessage({
                     type: 'vopStartCommand',
                     sessionId: this.itemplayerSessionId,
@@ -84,11 +85,13 @@ export class UnitCheckComponent implements OnInit, OnDestroy {
         }
         this.pendingUnitDef = this.ds.unitAndPlayerContainer.def;
         this.iFrameItemplayer = <HTMLIFrameElement>document.createElement('iframe');
-        this.iFrameItemplayer.setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin');
+        // this.iFrameItemplayer.setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin');
         this.iFrameItemplayer.setAttribute('class', 'unitHost');
         this.iFrameItemplayer.setAttribute('height', String(this.iFrameHostElement.clientHeight - 5));
         this.iFrameHostElement.appendChild(this.iFrameItemplayer);
         this.iFrameItemplayer.setAttribute('srcdoc', this.ds.unitAndPlayerContainer.player);
+        console.log("where am I", this.ds.unitAndPlayerContainer.player);
+        console.log("window", window);
       }
     });
   }
